@@ -11,4 +11,19 @@ export class NavComponent {
   faInfoCircle = faInfoCircle;
   isOpen = false;
 
+  accountMenu = [
+    {
+      label: 'Profile',
+    },
+    {
+      label: 'Activity',
+    },
+    {
+      label: 'Cards',
+    },
+    {
+      label: 'Settings',
+    },
+  ];
+
 }

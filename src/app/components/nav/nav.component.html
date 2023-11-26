@@ -19,7 +19,12 @@
           <a class="block py-3 px-4 text-white">Recent</a>
         </li>
         <li>
-          <app-button [type]="'button'">Create</app-button>
+          <app-button
+            [color]="'sky'"
+            [type]="'button'"
+          >
+            Create
+          </app-button>
         </li>
       </ul>
     </section>
@@ -85,36 +90,12 @@
       </div>
     </section>
     <ul class="py-1">
-      <li>
+      <li *ngFor="let item of accountMenu">
         <a
           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
           href="#"
         >
-          Profile
-        </a>
-      </li>
-      <li>
-        <a
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-          href="#"
-        >
-          Activity
-        </a>
-      </li>
-      <li>
-        <a
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-          href="#"
-        >
-          Cards
-        </a>
-      </li>
-      <li>
-        <a
-          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-          href="#"
-        >
-          Settings
+          {{ item.label }}
         </a>
       </li>
     </ul>
