@@ -1,0 +1,120 @@
+<nav class="bg-sky-700 border-gray-200 px-6 shadow-md">
+  <section class="flex flex-wrap justify-between items-center">
+    <section class="flex items-center">
+      <a routerLink="/">
+        <figure class="w-20 mr-8">
+          <img
+            class="w-full h-full"
+            src="/assets/images/logo/logo-gradient-white-trello.png"
+            alt="logo Trello"
+            loading="lazy"
+          />
+        </figure>
+      </a>
+      <ul class="flex items-center space-x-8 text-sm font-medium">
+        <li>
+          <a class="block py-3 px-4 text-white">Workspace</a>
+        </li>
+        <li>
+          <a class="block py-3 px-4 text-white">Recent</a>
+        </li>
+        <li>
+          <app-button [type]="'button'">Create</app-button>
+        </li>
+      </ul>
+    </section>
+    <section class="flex items-center">
+      <button
+        class="flex rounded-full"
+        aria-expanded="false"
+        type="button"
+        (click)="isOpen = !isOpen"
+        cdkOverlayOrigin
+        #menuOverlay="cdkOverlayOrigin"
+      >
+        <figure class="w-8 h-8 rounded-full">
+          <img
+            class="w-full h-full rounded-full"
+            src="https://api.lorem.space/image/face?w=400&h=400"
+            alt="user photo"
+          />
+        </figure>
+      </button>
+    </section>
+  </section>
+</nav>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="menuOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <section class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <header class="py-3 px-4 flex justify-between">
+      <h4 class="block text-sm text-center text-gray-900">Account</h4>
+      <button
+        class="block text-sm text-gray-900"
+        (click)="isOpen = !isOpen"
+      >
+        x
+      </button>
+    </header>
+    <section class="py-3 px-4 flex items-center space-x-4">
+      <figure class="w-10 h-10 rounded-full">
+        <img
+          class="w-full h-full rounded-full"
+          src="https://api.lorem.space/image/face?w=400&h=400"
+          alt=""
+        />
+      </figure>
+      <div class="space-y-1">
+        <p>Jese Leos</p>
+        <p class="text-sm text-gray-500">nico@gmail.com</p>
+      </div>
+    </section>
+    <ul class="py-1">
+      <li>
+        <a
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          href="#"
+        >
+          Profile
+        </a>
+      </li>
+      <li>
+        <a
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          href="#"
+        >
+          Activity
+        </a>
+      </li>
+      <li>
+        <a
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          href="#"
+        >
+          Cards
+        </a>
+      </li>
+      <li>
+        <a
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          href="#"
+        >
+          Settings
+        </a>
+      </li>
+    </ul>
+    <ul class="py-1">
+      <li>
+        <a
+          class="block py-2 px-4 text-sm text-gray-700"
+          href="#"
+        >
+          Log out
+        </a>
+      </li>
+    </ul>
+  </section>
+</ng-template>
