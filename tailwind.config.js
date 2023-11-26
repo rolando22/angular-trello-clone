@@ -8,9 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        success: colors.green,
         primary: colors.blue,
-      }
+        success: colors.green,
+        danger: colors.red,
+      },
+      container: {
+        screens: {
+          mobile: "600px",
+          tablet: "900px",
+          desktop: "1200px",
+        },
+      },
     },
   },
   plugins: [

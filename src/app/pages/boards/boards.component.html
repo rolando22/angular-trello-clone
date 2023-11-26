@@ -1,2 +1,33 @@
 <app-nav></app-nav>
-<h1>Boards Page</h1>
+<main class="container mx-auto flex mt-10">
+  <aside class="w-1/5 mr-4">
+    <ul class="flex flex-col font-medium text-gray-700">
+      <li>
+        <a class="block bg-sky-100 rounded py-1 px-3 text-sky-700">
+          <fa-icon [icon]="faTrello"></fa-icon> Boards
+        </a>
+      </li>
+      <li>
+        <a class="block rounded py-1 px-3">
+          <fa-icon [icon]="faBox"></fa-icon> Templates
+        </a>
+      </li>
+      <li>
+        <a class="block rounded py-1 px-3">
+          <fa-icon [icon]="faWaveSquare"></fa-icon> Home
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <section class="w-full">
+    <h1 class="text-lg font-bold mb-4">
+      <fa-icon></fa-icon> Recently viewed
+    </h1>
+    <section class="grid grid-cols-4 gap-4">
+      <article class="w-full bg-sky-700 px-4 py-2 rounded text-white font-bold h-24">Board 1</article>
+      <article class="w-full bg-green-700 px-4 py-2 rounded text-white font-bold h-24">Board 2</article>
+      <article class="w-full bg-amber-700 px-4 py-2 rounded text-white font-bold h-24">Board 3</article>
+      <article class="w-full bg-indigo-700 px-4 py-2 rounded text-white font-bold h-24">Board 4</article>
+    </section>
+  </section>
+</main>

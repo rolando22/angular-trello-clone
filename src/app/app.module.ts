@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NavComponent } from './components/nav/nav.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NavComponent } from './components/nav/nav.component';
     BrowserModule,
     OverlayModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
