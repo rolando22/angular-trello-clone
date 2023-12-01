@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -12,11 +13,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
-import { ButtonComponent } from './components/button/button.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 import { TableComponent } from './pages/table/table.component';
@@ -24,11 +23,9 @@ import { TableComponent } from './pages/table/table.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     BoardsComponent,
     BoardComponent,
     ScrollComponent,
-    ButtonComponent,
     NavComponent,
     TodoModalComponent,
     TableComponent,
@@ -36,6 +33,7 @@ import { TableComponent } from './pages/table/table.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
     OverlayModule,
