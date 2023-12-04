@@ -13,8 +13,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TitleComponent } from './components/title/title.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { ForgotPasswordFormComponent } from './components/forgot-password-form/forgot-password-form.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ForgotPasswordComponent } from './pages/forget-password/forgot-password.component';
 
 
 @NgModule({
@@ -26,8 +28,10 @@ import { RegisterComponent } from './pages/register/register.component';
     TitleComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    ForgotPasswordFormComponent,
     LoginComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,
