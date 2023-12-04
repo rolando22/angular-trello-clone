@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
-import { NavComponent } from './components/nav/nav.component';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 import { TableComponent } from './pages/table/table.component';
 
@@ -26,7 +25,6 @@ import { TableComponent } from './pages/table/table.component';
     BoardsComponent,
     BoardComponent,
     ScrollComponent,
-    NavComponent,
     TodoModalComponent,
     TableComponent,
   ],
