@@ -1,0 +1,39 @@
+<section class="flex flex-col w-full h-full bg-sky-600 px-4 pb-4">
+  <h2 class="text-xl font-bold text-white my-4">Demo Board</h2>
+  <section
+    class="flex grow items-start w-full h-full min-h-[20rem] overflow-x-scroll"
+    cdkDropListGroup
+  >
+    <article
+      *ngFor="let column of columns"
+      class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0"
+    >
+      <header class="flex justify-between py-1">
+        <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
+      </header>
+      <ul
+        class="text-sm mt-2 min-h-[2.5rem]"
+        cdkDropList
+        (cdkDropListDropped)="dropTodo($event)"
+        [cdkDropListData]="column.todos"
+      >
+        <li
+          *ngFor="let todo of column.todos"
+          class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
+          cdkDrag
+          (click)="openTodoModal(column.title, todo)"
+        >
+          {{ todo.title }}
+        </li>
+      </ul>
+    </article>
+    <app-button
+      class="shrink-0"
+      [color]="'gray-light'"
+      [type]="'button'"
+      (click)="addColumn()"
+    >
+      Add Column
+    </app-button>
+  </section>
+</section>

@@ -13,19 +13,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
-import { BoardsComponent } from './pages/boards/boards.component';
-import { BoardComponent } from './pages/board/board.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
-import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 import { TableComponent } from './pages/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoardsComponent,
-    BoardComponent,
     ScrollComponent,
-    TodoModalComponent,
     TableComponent,
   ],
   imports: [

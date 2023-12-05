@@ -20,6 +20,25 @@ export class TodoModalComponent {
 
   inputData: InputData;
 
+  asideMenu = [
+    {
+      label: 'Members',
+      icon: faUser,
+    },
+    {
+      label: 'Labels',
+      icon: faTag,
+    },
+    {
+      label: 'Checklist',
+      icon: faCheckSquare,
+    },
+    {
+      label: 'Dates',
+      icon: faClock,
+    },
+  ];
+
   constructor(
     private dialogRef: DialogRef<OutputData>,
     @Inject(DIALOG_DATA) data: InputData,

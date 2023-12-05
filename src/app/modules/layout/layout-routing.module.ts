@@ -7,6 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'boards',
+        pathMatch: 'full',
+      },
+      {
+        path: 'boards',
+        loadChildren: () => import('../boards/boards.module').then(m => m.BoardsModule),
+      },
+    ]
   },
 ];
 
