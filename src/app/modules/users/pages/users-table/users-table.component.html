@@ -1,0 +1,96 @@
+<div class="w-full h-full grow bg-white p-6">
+  <section class="container mx-auto">
+    <h1 class="text-xl text-gray-700 font-semibold italic mb-5">Users</h1>
+    <table
+      class="w-full text-sm text-left text-gray-500"
+      cdk-table
+      [dataSource]="dataSource"
+    >
+      <tr
+        class="text-xs text-gray-700 uppercase bg-gray-50"
+        cdk-header-row
+        *cdkHeaderRowDef="columns"
+      ></tr>
+      <tr
+        class="bg-white border-b"
+        cdk-row
+        *cdkRowDef="let user; columns: columns"
+      ></tr>
+
+      <ng-container cdkColumnDef="id">
+        <th
+          class="py-3 px-6"
+          cdk-header-cell
+          *cdkHeaderCellDef=""
+        >
+          #ID
+        </th>
+        <td
+          cdk-cell
+          class="py-4 px-6"
+          *cdkCellDef="let user"
+        >
+          {{ user.id }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="avatar">
+        <th
+          class="py-3 px-6"
+          cdk-header-cell
+          *cdkHeaderCellDef=""
+        >
+          Avatar
+        </th>
+        <td
+          cdk-cell
+          class="py-4 px-6"
+          *cdkCellDef="let user"
+        >
+          <figure class="w-20">
+            <img
+              class="w-full h-full"
+              [src]="user.avatar"
+              [alt]="user.name"
+            />
+          </figure>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="name">
+        <th
+          class="py-3 px-6"
+          cdk-header-cell
+          *cdkHeaderCellDef=""
+        >
+          Name
+        </th>
+        <td
+          cdk-cell
+          class="py-4 px-6"
+          *cdkCellDef="let user"
+        >
+          {{ user.name }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="email">
+        <th
+          class="py-3 px-6"
+          cdk-header-cell
+          *cdkHeaderCellDef=""
+        >
+          Email
+        </th>
+        <td
+          cdk-cell
+          class="py-4 px-6"
+          *cdkCellDef="let user"
+        >
+          {{ user.email }}
+        </td>
+      </ng-container>
+
+    </table>
+  </section>
+</div>
