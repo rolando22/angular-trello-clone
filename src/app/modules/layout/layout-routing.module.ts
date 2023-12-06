@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
+import { ScrollComponent } from './pages/scroll/scroll.component';
+import { TableComponent } from './pages/table/table.component';
 
 const routes: Routes = [
   {
@@ -14,8 +16,20 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'scroll',
+        component: ScrollComponent,
+      },
+      {
+        path: 'table',
+        component: TableComponent,
+      },
+      {
         path: 'boards',
         loadChildren: () => import('../boards/boards.module').then(m => m.BoardsModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: 'users',
