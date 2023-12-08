@@ -14,7 +14,7 @@ import { RequestStatus } from '@models/request-status.model';
 export class RecoveryFormComponent {
 
   form = this.formBuilder.nonNullable.group({
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', [Validators.required]],
   }, {
     validators: [CustomValidators.MatchValidator({ source: 'password', target: 'confirmPassword' })],
