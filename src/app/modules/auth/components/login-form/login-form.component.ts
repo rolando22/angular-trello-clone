@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +10,7 @@ import { RequestStatus } from '@models/request-status.model';
   selector: 'app-login-form',
   templateUrl: './login-form.component.html'
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
 
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.email, Validators.required]],
@@ -26,7 +26,16 @@ export class LoginFormComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private route: ActivatedRoute,
   ) {}
+
+  ngOnInit(): void {
+    this.route.queryParamMap
+      .subscribe(params => {
+        const email = params.get('email');
+        if (email) this.form.controls.email.setValue(email);
+      });
+  }
 
   login() {
     if (this.form.valid) {
