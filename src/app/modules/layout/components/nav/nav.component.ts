@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { faBell, faInfoCircle, faClose, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -32,5 +35,15 @@ export class NavComponent {
       routerLink: '',
     },
   ];
+
+  constructor (
+    private router: Router,
+    private authService: AuthService,
+  ) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login'])
+  }
 
 }

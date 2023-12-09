@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, switchMap, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
+import { TokenService } from '@services/token.service';
+import { LoginResponse } from '@models/auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,14 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private tokenService: TokenService,
   ) { }
 
   login({ email, password }: { email: string, password: string }) {
-    return this.http.post(`${this.apiUrl}/api/v1/auth/login`, { email, password });
+    return this.http.post<LoginResponse>(`${this.apiUrl}/api/v1/auth/login`, { email, password })
+      .pipe(
+        tap((res) => this.tokenService.save({ token: res.access_token }))
+      );
   }
 
   register({ name, email, password }: { name: string, email: string, password: string }) {
@@ -46,6 +52,10 @@ export class AuthService {
 
   changePassword({ token, password }: { token: string, password: string }) {
     return this.http.post(`${this.apiUrl}/api/v1/auth/change-password`, { token, newPassword: password });
+  }
+
+  logout() {
+    this.tokenService.remove();
   }
 
 }
