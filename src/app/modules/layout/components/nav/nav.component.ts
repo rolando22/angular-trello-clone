@@ -14,8 +14,11 @@ export class NavComponent {
   faInfoCircle = faInfoCircle;
   faClose = faClose;
   faAngleDown = faAngleDown;
+
   isOpenOverlayAvatar = false;
   isOpenOverlayBoards = false;
+
+  user$ = this.authService.user$;
 
   accountMenu = [
     {
