@@ -7,6 +7,7 @@ import { environment } from '@environments/environment';
 import { TokenService } from '@services/token.service';
 import { LoginResponse } from '@models/auth.model';
 import { User } from '@models/user.model';
+import { checkToken } from '@interceptors/token.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -62,12 +63,7 @@ export class AuthService {
   }
 
   getProfile() {
-    const token = this.tokenService.get();
-    return this.http.get<User>(`${this.apiUrl}/api/v1/auth/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    return this.http.get<User>(`${this.apiUrl}/api/v1/auth/profile`, { context: checkToken() })
       .pipe(
         tap(user => this.user$.next(user)),
       );
