@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 import { TokenService } from '@services/token.service';
 
 export const RedirectGuard: CanActivateFn = (): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
-  const token = inject(TokenService).get();
+  const isValidToken = inject(TokenService).isValid();
   const router = inject(Router);
-  if (token) router.navigate(['/app/boards']);
+  if (isValidToken) router.navigate(['/app/boards']);
   return true;
 }
