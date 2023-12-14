@@ -7,24 +7,50 @@ import { JwtPayload, jwtDecode } from 'jwt-decode';
 })
 export class TokenService {
 
-  private tokenKey = 'token_trello'
+  private tokenKey = 'token_trello';
+  private refreshTokenKey = 'refresh_token_trello';
 
   constructor() { }
 
-  save({ token }: { token:string }) {
+  saveToken({ token }: { token: string }) {
     setCookie(this.tokenKey, token, { expires: 365, path: '/' });
   }
 
-  get() {
+  getToken() {
     return getCookie(this.tokenKey);
   }
 
-  remove() {
+  removeToken() {
     removeCookie(this.tokenKey);
   }
 
-  isValid() {
-    const token = this.get();
+  saveRefreshToken({ token }: { token: string }) {
+    setCookie(this.refreshTokenKey, token, { expires: 365, path: '/' });
+  }
+
+  getRefreshToken() {
+    return getCookie(this.refreshTokenKey);
+  }
+
+  removeRefreshToken() {
+    removeCookie(this.refreshTokenKey);
+  }
+
+  isValidToken() {
+    const token = this.getToken();
+    if (!token) return false;
+    const decodeToken = jwtDecode(token);
+    if (decodeToken && decodeToken?.exp) {
+      const tokenDate = new Date(0);
+      tokenDate.setUTCSeconds(decodeToken.exp);
+      const today = new Date();
+      return tokenDate.getTime() > today.getTime();
+    }
+    return false;
+  }
+
+  isValidRefreshToken() {
+    const token = this.getRefreshToken();
     if (!token) return false;
     const decodeToken = jwtDecode(token);
     if (decodeToken && decodeToken?.exp) {

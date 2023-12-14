@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { TokenService } from '@services/token.service';
 
 export const AuthGuard: CanActivateFn = (): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
-  const isValidToken = inject(TokenService).isValid();
+  const isValidToken = inject(TokenService).isValidRefreshToken();
   const router = inject(Router);
   if (!isValidToken) {
     router.navigate(['/login']);
