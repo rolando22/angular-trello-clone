@@ -44,28 +44,11 @@
     </h1>
     <section class="grid grid-cols-4 gap-4">
       <a
-        routerLink="/app/boards/1"
+        *ngFor="let board of boards"
+        [routerLink]="['/app/boards/', board.id]"
         class="w-full bg-sky-700 px-4 py-2 rounded text-white font-bold h-24"
       >
-        Board 1
-      </a>
-      <a
-        routerLink="/app/boards/2"
-        class="w-full bg-green-700 px-4 py-2 rounded text-white font-bold h-24"
-      >
-        Board 2
-      </a>
-      <a
-        routerLink="/app/boards/3"
-        class="w-full bg-amber-700 px-4 py-2 rounded text-white font-bold h-24"
-      >
-        Board 3
-      </a>
-      <a
-        routerLink="/app/boards/4"
-        class="w-full bg-indigo-700 px-4 py-2 rounded text-white font-bold h-24"
-      >
-        Board 4
+        {{ board.title }}
       </a>
     </section>
   </section>
