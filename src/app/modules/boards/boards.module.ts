@@ -8,13 +8,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
+import { CardModalComponent } from './components/card-modal/card-modal.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 
 @NgModule({
   declarations: [
-    TodoModalComponent,
+    CardModalComponent,
     BoardsComponent,
     BoardComponent,
   ],

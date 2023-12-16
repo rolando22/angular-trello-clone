@@ -5,18 +5,14 @@ import { faClose, faCheckToSlot, faBars, faUser, faTag, faCheckSquare, faClock }
 import { InputData, OutputData } from 'src/app/models/todoModal.model';
 
 @Component({
-  selector: 'app-todo-modal',
-  templateUrl: './todo-modal.component.html'
+  selector: 'app-card-modal',
+  templateUrl: './card-modal.component.html'
 })
-export class TodoModalComponent {
+export class CardModalComponent {
 
   faClose = faClose;
   faCheckToSlot = faCheckToSlot;
   faBars = faBars;
-  faUser = faUser;
-  faTag = faTag;
-  faCheckSquare = faCheckSquare;
-  faClock = faClock;
 
   inputData: InputData;
 

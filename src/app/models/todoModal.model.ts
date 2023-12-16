@@ -1,8 +1,8 @@
-import { ToDo } from "./todo.model";
+import { Card } from '@models/board.model';
 
 export interface InputData {
   column: string
-  todo: ToDo
+  card: Card
 }
 
 export interface OutputData {

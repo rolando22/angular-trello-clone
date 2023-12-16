@@ -1,76 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
 
-import { TodoModalComponent } from '@boards/components/todo-modal/todo-modal.component';
-import { ToDo, Column } from 'src/app/models/todo.model';
+import { BoardsService } from '@services/boards.service';
+import { CardModalComponent } from '@boards/components/card-modal/card-modal.component';
+import { Column } from '@models/todo.model';
+import { Board, Card } from '@models/board.model';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit {
 
-  columns: Column[] = [
-    {
-      title: 'To Do',
-      todos: [
-        {
-          id: '1',
-          title: 'Task 1',
-        },
-        {
-          id: '2',
-          title: 'Task 2',
-        },
-        {
-          id: '3',
-          title: 'Task 3',
-        },
-      ],
-    },
-    {
-      title: 'Doing',
-      todos: [
-        {
-          id: '4',
-          title: 'Task 4',
-        },
-        {
-          id: '5',
-          title: 'Task 5',
-        },
-        {
-          id: '6',
-          title: 'Task 6',
-        },
-      ],
-    },
-    {
-      title: 'Done',
-      todos: [
-        {
-          id: '7',
-          title: 'Task 7',
-        },
-        {
-          id: '8',
-          title: 'Task 8',
-        },
-        {
-          id: '9',
-          title: 'Task 9',
-        },
-      ],
-    },
-  ];
+  board: Board | null = null;
 
   constructor(
-    private dialog: Dialog
+    private dialog: Dialog,
+    private route: ActivatedRoute,
+    private boardsService: BoardsService
   ) {}
 
-  dropTodo(event: CdkDragDrop<ToDo[]>) {
+  ngOnInit(): void {
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          const id = params.get('id') || '';
+          return this.boardsService.getOne({ id });
+        })
+      )
+      .subscribe({
+        next: board => this.board = board,
+        error: error => console.log(error),
+      });
+  }
+
+  dropTodo(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container)
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else
@@ -86,16 +54,16 @@ export class BoardComponent {
   }
 
   addColumn() {
-    this.columns.push({ title: 'New Column', todos: [] });
+    // this.columns.push({ title: 'New Column', todos: [] });
   }
 
-  openTodoModal(column: string, todo: ToDo) {
-    const dialogRef = this.dialog.open(TodoModalComponent, {
+  openTodoModal(column: string, card: Card) {
+    const dialogRef = this.dialog.open(CardModalComponent, {
       minWidth: '300px',
       maxWidth: '50%',
       data: {
         column,
-        todo,
+        card,
       },
       disableClose: true,
     });

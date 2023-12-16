@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoModalComponent } from './todo-modal.component';
+import { CardModalComponent } from './card-modal.component';
 
-describe('TodoModalComponent', () => {
-  let component: TodoModalComponent;
-  let fixture: ComponentFixture<TodoModalComponent>;
+describe('CardModalComponent', () => {
+  let component: CardModalComponent;
+  let fixture: ComponentFixture<CardModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoModalComponent ]
+      declarations: [ CardModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TodoModalComponent);
+    fixture = TestBed.createComponent(CardModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
