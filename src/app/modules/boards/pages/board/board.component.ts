@@ -5,9 +5,11 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Dialog } from '@angular/cdk/dialog';
 
 import { BoardsService } from '@services/boards.service';
+import { CardsService } from '@services/cards.service';
 import { CardModalComponent } from '@boards/components/card-modal/card-modal.component';
 import { Column } from '@models/todo.model';
-import { Board, Card } from '@models/board.model';
+import { Board } from '@models/board.model';
+import { Card, UpdateCardDTO } from '@models/card.model';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +23,8 @@ export class BoardComponent implements OnInit {
   constructor(
     private dialog: Dialog,
     private route: ActivatedRoute,
-    private boardsService: BoardsService
+    private boardsService: BoardsService,
+    private cardsService: CardsService,
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +46,10 @@ export class BoardComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    const position = this.boardsService.getPosition({ cards: event.container.data, currentIndex: event.currentIndex });
+    const cardId = event.container.data[event.currentIndex].id;
+    const listId = parseInt(event.container.id);
+    this.updateCard(cardId, { position , listId });
   }
 
   dropColumn(event: CdkDragDrop<Column[]>) {
@@ -55,6 +62,14 @@ export class BoardComponent implements OnInit {
 
   addColumn() {
     // this.columns.push({ title: 'New Column', todos: [] });
+  }
+
+  private updateCard(id: Card['id'], changes: UpdateCardDTO) {
+    this.cardsService.update({ id, changes })
+      .subscribe({
+        next: cardUpdated => console.log(cardUpdated),
+        error: error => console.log(error),
+      });
   }
 
   openTodoModal(column: string, card: Card) {

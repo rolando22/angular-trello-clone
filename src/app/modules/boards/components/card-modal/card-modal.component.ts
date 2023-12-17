@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { faClose, faCheckToSlot, faBars, faUser, faTag, faCheckSquare, faClock } from '@fortawesome/free-solid-svg-icons';
 
-import { InputData, OutputData } from 'src/app/models/todoModal.model';
+import { InputData, OutputData } from '@models/card-modal.model';
 
 @Component({
   selector: 'app-card-modal',

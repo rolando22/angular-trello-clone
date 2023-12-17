@@ -16,6 +16,7 @@
         cdkDropList
         (cdkDropListDropped)="dropTodo($event)"
         [cdkDropListData]="list.cards"
+        [id]="list.id"
       >
         <li
           *ngFor="let card of list.cards"

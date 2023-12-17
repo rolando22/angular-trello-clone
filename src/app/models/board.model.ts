@@ -1,13 +1,6 @@
 import { User } from '@models/user.model';
+import { Card } from '@models/card.model';
 import { colorCard } from '@models/color.model';
-
-export interface Card {
-  id: string
-  title: string
-  description: string
-  position: number
-  list: List
-}
 
 export interface List {
   id: string

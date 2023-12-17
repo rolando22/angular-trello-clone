@@ -1,4 +1,4 @@
-import { Card } from '@models/board.model';
+import { Card } from '@models/card.model';
 
 export interface InputData {
   column: string
