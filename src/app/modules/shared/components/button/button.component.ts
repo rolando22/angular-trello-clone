@@ -21,7 +21,7 @@ export class ButtonComponent {
     success: 'text-white bg-success-700 hover:bg-success-800 focus:ring-success-300',
     danger: 'text-white bg-danger-700 hover:bg-danger-800 focus:ring-danger-300',
     sky: 'text-white bg-sky-700 hover:bg-sky-800 focus:ring-sky-300',
-    'gray-light': 'text-gray-700 bg-gray-200 hover:bg-gray-500 focus:ring-gray-50',
+    'gray-light': 'text-gray-700 bg-gray-200 hover:bg-gray-500 hover:text-white focus:ring-gray-50',
   };
 
   get colors() {

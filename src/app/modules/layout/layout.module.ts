@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavComponent } from './components/nav/nav.component';
+import { BoardFormComponent } from './components/board-form/board-form.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
 import { TableComponent } from './pages/table/table.component';
 
@@ -17,6 +18,7 @@ import { TableComponent } from './pages/table/table.component';
   declarations: [
     LayoutComponent,
     NavComponent,
+    BoardFormComponent,
     ScrollComponent,
     TableComponent,
   ],

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { checkToken } from '@interceptors/token.interceptor';
-import { Board } from '@models/board.model';
+import { Board, CreateBoardDTO } from '@models/board.model';
 import { Card } from '@models/card.model';
 
 @Injectable({
@@ -20,6 +20,10 @@ export class BoardsService {
 
   getOne({ id }: { id: Board['id'] }) {
     return this.http.get<Board>(`${this.apiUrl}/api/v1/boards/${id}`, { context: checkToken() });
+  }
+
+  create(dto: CreateBoardDTO) {
+    return this.http.post<Board>(`${this.apiUrl}/api/v1/boards/`, dto, { context: checkToken() });
   }
 
   getPosition({ cards, currentIndex }: { cards: Card[], currentIndex: number }) {

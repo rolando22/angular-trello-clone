@@ -17,3 +17,5 @@ export interface Board {
   lists: List[]
   cards: Card[]
 }
+
+export interface CreateBoardDTO extends Omit<Board, 'id' | 'members' | 'lists' | 'cards'> {}

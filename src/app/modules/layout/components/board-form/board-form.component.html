@@ -1,0 +1,140 @@
+<form
+  class="space-y-4"
+  [formGroup]="boardForm"
+  novalidate
+  (ngSubmit)="createBoard()"
+>
+  <div class="flex flex-wrap">
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="sky-radio"
+          type="radio"
+          value="sky"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="sky-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-sky-700 hover:bg-sky-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="yellow-radio"
+          type="radio"
+          value="yellow"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="yellow-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-yellow-700 hover:bg-yellow-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="green-radio"
+          type="radio"
+          value="green"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="green-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-green-700 hover:bg-green-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="red-radio"
+          type="radio"
+          value="red"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="red-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-red-700 hover:bg-red-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="violet-radio"
+          type="radio"
+          value="violet"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="violet-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-violet-700 hover:bg-violet-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+    <div class="flex items-center me-4">
+        <input
+          class="hidden peer"
+          id="gray-radio"
+          type="radio"
+          value="gray"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+        >
+        <label
+          for="gray-radio"
+          class="inline-flex items-center justify-center w-12 h-12 text-transparent border border-gray-200 rounded cursor-pointer bg-gray-700 hover:bg-gray-500 peer-checked:text-white"
+        >
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </label>
+    </div>
+  </div>
+  <div>
+    <div class="relative">
+      <input
+        formControlName="title"
+        class="w-full rounded bg-gray-100 border-2 border-gray-300"
+        type="text"
+        placeholder="Enter title"
+      />
+    </div>
+    <div *ngIf="boardForm.controls.title.touched && boardForm.controls.title.invalid">
+      <p
+        *ngIf="boardForm.controls.title.hasError('required')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        This field is mandatory
+      </p>
+    </div>
+  </div>
+  <div>
+    <app-button
+    [color]="'success'"
+    [type]="'submit'"
+    >
+      Create
+    </app-button>
+  </div>
+  <div>
+    <app-button
+      [color]="'gray-light'"
+      [type]="'button'"
+      (click)="close()"
+    >
+      Cancel
+    </app-button>
+  </div>
+</form>
