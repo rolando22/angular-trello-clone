@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 import { BoardsService } from '@services/boards.service';
 import { CardsService } from '@services/cards.service';
 import { CardModalComponent } from '@boards/components/card-modal/card-modal.component';
 import { Column } from '@models/todo.model';
-import { Board } from '@models/board.model';
+import { Board, List } from '@models/board.model';
 import { Card, UpdateCardDTO } from '@models/card.model';
 
 @Component({
@@ -19,6 +21,11 @@ import { Card, UpdateCardDTO } from '@models/card.model';
 export class BoardComponent implements OnInit {
 
   board: Board | null = null;
+  inputCardTitle = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
+  faClose = faClose;
 
   constructor(
     private dialog: Dialog,
@@ -31,8 +38,8 @@ export class BoardComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params) => {
-          const id = params.get('id') || '';
-          return this.boardsService.getOne({ id });
+          const id = params.get('id') || '0';
+          return this.boardsService.getOne({ id: parseInt(id) });
         })
       )
       .subscribe({
@@ -83,6 +90,38 @@ export class BoardComponent implements OnInit {
       disableClose: true,
     });
     dialogRef.closed.subscribe(output => console.log(output));
+  }
+
+  openCardForm(selectedList: List) {
+    if (this.board?.lists) {
+      this.board.lists = this.board.lists.map(list => ({
+        ...list,
+        showCardForm: list.id === selectedList.id,
+      }));
+    }
+  }
+
+  createCard(list: List) {
+    if (this.board) {
+      const title = this.inputCardTitle.value;
+      this.cardsService.create({
+        title,
+        position: this.boardsService.getPositionNewCard({ cards: list.cards }),
+        listId: list.id,
+        boardId: this.board?.id,
+      })
+        .subscribe({
+          next: card => {
+            list.cards.push(card);
+            this.inputCardTitle.setValue('');
+          },
+          error: error => console.log(error),
+        });
+    }
+  }
+
+  closeCardForm(selectedList: List) {
+    selectedList.showCardForm = false;
   }
 
 }

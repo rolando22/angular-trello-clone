@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardsRoutingModule } from './boards-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '@shared/shared.module';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
@@ -21,6 +22,7 @@ import { BoardComponent } from './pages/board/board.component';
   imports: [
     CommonModule,
     BoardsRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
     CdkAccordionModule,
     DragDropModule,

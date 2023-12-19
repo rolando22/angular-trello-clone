@@ -3,14 +3,15 @@ import { Card } from '@models/card.model';
 import { colorCard } from '@models/color.model';
 
 export interface List {
-  id: string
+  id: number
   title: string
   position: number
   cards: Card[]
+  showCardForm?: boolean
 }
 
 export interface Board {
-  id: string
+  id: number
   title: string
   backgroundColor: colorCard
   members: User[]

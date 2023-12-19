@@ -16,7 +16,7 @@
         cdkDropList
         (cdkDropListDropped)="dropTodo($event)"
         [cdkDropListData]="list.cards"
-        [id]="list.id"
+        [id]="list.id.toString()"
       >
         <li
           *ngFor="let card of list.cards"
@@ -25,6 +25,43 @@
           (click)="openTodoModal(list.title, card)"
         >
           {{ card.title }}
+        </li>
+      </ul>
+      <ul class="mt-5">
+        <li *ngIf="!list.showCardForm">
+          <app-button
+            [color]="'gray-light'"
+            [type]="'button'"
+            (click)="openCardForm(list)"
+          >
+            Add Card
+          </app-button>
+        </li>
+        <li
+          *ngIf="list.showCardForm"
+          class="w-full"
+        >
+          <textarea
+            class="w-full rounded text-xs border-b-gray-400 border-b-2"
+            [formControl]="inputCardTitle"
+            placeholder="Enter a title for this card"
+          ></textarea>
+          <div class="flex gap-2">
+            <app-button
+              [color]="'primary'"
+              [type]="'button'"
+              (click)="createCard(list)"
+              >
+                Create
+              </app-button>
+              <app-button
+                [color]="'gray-light'"
+                [type]="'button'"
+                (click)="closeCardForm(list)"
+              >
+                <fa-icon [icon]="faClose"></fa-icon>
+              </app-button>
+          </div>
         </li>
       </ul>
     </article>

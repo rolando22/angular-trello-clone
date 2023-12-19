@@ -3,7 +3,7 @@ import { List } from '@models/board.model';
 export interface Card {
   id: string
   title: string
-  description: string
+  description?: string
   position: number
   list: List
 }

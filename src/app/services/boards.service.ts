@@ -45,4 +45,12 @@ export class BoardsService {
     }
     return 0;
   }
+
+  getPositionNewCard({ cards }: { cards: Card[] }) {
+    if (cards.length === 0) {
+      return this.bufferSpace;
+    }
+    const onBottomPosition = cards[cards.length - 1].position;
+    return onBottomPosition + this.bufferSpace;
+  }
 }
