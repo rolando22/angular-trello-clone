@@ -1,14 +1,7 @@
 import { User } from '@models/user.model';
 import { Card } from '@models/card.model';
+import { List } from '@models/list.model';
 import { colorCard } from '@models/color.model';
-
-export interface List {
-  id: number
-  title: string
-  position: number
-  cards: Card[]
-  showCardForm?: boolean
-}
 
 export interface Board {
   id: number

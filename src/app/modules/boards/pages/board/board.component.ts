@@ -8,9 +8,11 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 import { BoardsService } from '@services/boards.service';
 import { CardsService } from '@services/cards.service';
+import { ListsService } from '@services/lists.service';
 import { CardModalComponent } from '@boards/components/card-modal/card-modal.component';
 import { Column } from '@models/todo.model';
-import { Board, List } from '@models/board.model';
+import { Board } from '@models/board.model';
+import { List } from '@models/list.model';
 import { Card, UpdateCardDTO } from '@models/card.model';
 
 @Component({
@@ -25,6 +27,11 @@ export class BoardComponent implements OnInit {
     nonNullable: true,
     validators: [Validators.required],
   });
+  inputListTitle = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required],
+  });
+  showListForm = false;
   faClose = faClose;
 
   constructor(
@@ -32,6 +39,7 @@ export class BoardComponent implements OnInit {
     private route: ActivatedRoute,
     private boardsService: BoardsService,
     private cardsService: CardsService,
+    private listsService: ListsService,
   ) {}
 
   ngOnInit(): void {
@@ -67,8 +75,26 @@ export class BoardComponent implements OnInit {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
   }
 
-  addColumn() {
-    // this.columns.push({ title: 'New Column', todos: [] });
+  addList() {
+    if (this.board) {
+      const title = this.inputListTitle.value;
+      this.listsService.create({
+        title,
+        position: this.boardsService.getPositionNewItem({ elements: this.board.lists }),
+        boardId: this.board.id,
+      })
+        .subscribe({
+          next: list => {
+            this.board?.lists.push({
+              ...list,
+              cards: [],
+            });
+            this.showListForm = false;
+            this.inputListTitle.setValue('');
+          },
+          error: error => console.log(error),
+        });
+    }
   }
 
   private updateCard(id: Card['id'], changes: UpdateCardDTO) {
@@ -106,9 +132,9 @@ export class BoardComponent implements OnInit {
       const title = this.inputCardTitle.value;
       this.cardsService.create({
         title,
-        position: this.boardsService.getPositionNewCard({ cards: list.cards }),
+        position: this.boardsService.getPositionNewItem({ elements: list.cards }),
         listId: list.id,
-        boardId: this.board?.id,
+        boardId: this.board.id,
       })
         .subscribe({
           next: card => {

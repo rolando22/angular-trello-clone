@@ -65,13 +65,41 @@
         </li>
       </ul>
     </article>
-    <app-button
-      class="shrink-0"
-      [color]="'gray-light'"
-      [type]="'button'"
-      (click)="addColumn()"
-    >
-      Add Column
-    </app-button>
+    <article class="shrink-0">
+      <app-button
+        *ngIf="!showListForm"
+        [color]="'gray-light'"
+        [type]="'button'"
+        (click)="showListForm = !showListForm"
+      >
+        Add Column
+      </app-button>
+      <section
+          *ngIf="showListForm"
+          class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0"
+        >
+          <textarea
+            class="w-full rounded text-xs border-b-gray-400 border-b-2"
+            [formControl]="inputListTitle"
+            placeholder="Enter a title for this list"
+          ></textarea>
+          <div class="flex gap-2">
+            <app-button
+              [color]="'primary'"
+              [type]="'button'"
+              (click)="addList()"
+              >
+                Create
+              </app-button>
+              <app-button
+                [color]="'gray-light'"
+                [type]="'button'"
+                (click)="showListForm = !showListForm"
+              >
+                <fa-icon [icon]="faClose"></fa-icon>
+              </app-button>
+          </div>
+        </section>
+    </article>
   </section>
 </section>

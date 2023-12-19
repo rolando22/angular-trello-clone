@@ -5,6 +5,7 @@ import { environment } from '@environments/environment';
 import { checkToken } from '@interceptors/token.interceptor';
 import { Board, CreateBoardDTO } from '@models/board.model';
 import { Card } from '@models/card.model';
+import { List } from '@models/list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +47,11 @@ export class BoardsService {
     return 0;
   }
 
-  getPositionNewCard({ cards }: { cards: Card[] }) {
-    if (cards.length === 0) {
+  getPositionNewItem({ elements }: { elements: Card[] | List[] }) {
+    if (elements.length === 0) {
       return this.bufferSpace;
     }
-    const onBottomPosition = cards[cards.length - 1].position;
+    const onBottomPosition = elements[elements.length - 1].position;
     return onBottomPosition + this.bufferSpace;
   }
 }

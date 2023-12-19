@@ -1,4 +1,4 @@
-import { List } from '@models/board.model';
+import { List } from '@models/list.model';
 
 export interface Card {
   id: string
