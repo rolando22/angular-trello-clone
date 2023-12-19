@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
@@ -14,13 +14,14 @@ import { Column } from '@models/todo.model';
 import { Board } from '@models/board.model';
 import { List } from '@models/list.model';
 import { Card, UpdateCardDTO } from '@models/card.model';
+import { colorsBackground, mapColorsBackground } from '@models/color.model';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
 
   board: Board | null = null;
   inputCardTitle = new FormControl<string>('', {
@@ -33,6 +34,7 @@ export class BoardComponent implements OnInit {
   });
   showListForm = false;
   faClose = faClose;
+  mapsColor: mapColorsBackground = colorsBackground;
 
   constructor(
     private dialog: Dialog,
@@ -51,9 +53,21 @@ export class BoardComponent implements OnInit {
         })
       )
       .subscribe({
-        next: board => this.board = board,
+        next: board => {
+          this.board = board;
+          this.boardsService.setBackgroundColor({ color: this.board.backgroundColor });
+        },
         error: error => console.log(error),
       });
+  }
+
+  ngOnDestroy(): void {
+    this.boardsService.setBackgroundColor({ color: 'sky' });
+  }
+
+  get colors() {
+    const backgroundColor = this.board?.backgroundColor || 'sky';
+    return this.mapsColor[backgroundColor];
   }
 
   dropTodo(event: CdkDragDrop<Card[]>) {

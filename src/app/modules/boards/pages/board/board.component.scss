@@ -13,17 +13,91 @@
   height: 8px;
 }
 
-::-webkit-scrollbar-thumb {
+.bg-sky-600 ::-webkit-scrollbar-thumb {
   background-color: rgb(3 105 161 / var(--tw-bg-opacity));
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-track {
+.bg-sky-600 ::-webkit-scrollbar-track {
   background-color: rgb(14 165 233 / var(--tw-bg-opacity));
   border-radius: 4px;
 }
 
 /* Agrega un efecto hover a la barra de desplazamiento */
-::-webkit-scrollbar-thumb:hover {
+.bg-sky-600 ::-webkit-scrollbar-thumb:hover {
   background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-600 ::-webkit-scrollbar-thumb {
+  background-color: rgb(161 161 4 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-yellow-600 ::-webkit-scrollbar-track {
+  background-color: rgb(203 203 42 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-yellow-600 ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(255 255 152 / var(--tw-bg-opacity));
+}
+
+.bg-green-600 ::-webkit-scrollbar-thumb {
+  background-color: rgb(4 161 30 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-green-600 ::-webkit-scrollbar-track {
+  background-color: rgb(14 233 50 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+/* Agrega un efecto hover a la barra de desplazamiento */
+.bg-green-600 ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(127 253 143 / var(--tw-bg-opacity));
+}
+
+.bg-red-600 ::-webkit-scrollbar-thumb {
+  background-color: rgb(161 4 61 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-red-600 ::-webkit-scrollbar-track {
+  background-color: rgb(233 14 51 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+/* Agrega un efecto hover a la barra de desplazamiento */
+.bg-red-600 ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(253 127 148 / var(--tw-bg-opacity));
+}
+
+.bg-violet-400 ::-webkit-scrollbar-thumb {
+  background-color: rgb(103 4 161 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-violet-400 ::-webkit-scrollbar-track {
+  background-color: rgb(168 14 233 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+/* Agrega un efecto hover a la barra de desplazamiento */
+.bg-violet-400 ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(211 127 253 / var(--tw-bg-opacity));
+}
+
+.bg-gray-600 ::-webkit-scrollbar-thumb {
+  background-color: rgb(159 159 159 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+.bg-gray-600 ::-webkit-scrollbar-track {
+  background-color: rgb(226 227 228 / var(--tw-bg-opacity));
+  border-radius: 4px;
+}
+
+/* Agrega un efecto hover a la barra de desplazamiento */
+.bg-gray-600 ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(245 246 246 / var(--tw-bg-opacity));
 }

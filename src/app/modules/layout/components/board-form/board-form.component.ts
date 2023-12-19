@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import { BoardsService } from '@services/boards.service';
-import { colorCard } from '@models/color.model';
+import { color } from '@models/color.model';
 
 @Component({
   selector: 'app-board-form',
@@ -14,7 +14,7 @@ export class BoardFormComponent {
 
   boardForm = this.formBuilder.nonNullable.group({
     title: ['', [Validators.required]],
-    backgroundColor: new FormControl<colorCard>('sky', {
+    backgroundColor: new FormControl<color>('sky', {
       nonNullable: true,
       validators: [Validators.required],
     }),

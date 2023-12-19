@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBell, faInfoCircle, faClose, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { color, mapColorsBackground, navColorsBackground } from '@models/color.model';
 
 import { AuthService } from '@services/auth.service';
+import { BoardsService } from '@services/boards.service';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +22,9 @@ export class NavComponent {
   isOpenOverlayCreateBoard = false;
 
   user$ = this.authService.user$;
+
+  navColor: color = 'sky';
+  mapColors: mapColorsBackground = navColorsBackground;
 
   accountMenu = [
     {
@@ -43,7 +48,15 @@ export class NavComponent {
   constructor (
     private router: Router,
     private authService: AuthService,
-  ) {}
+    private boardsService: BoardsService,
+  ) {
+    this.boardsService.backgroundColor$
+      .subscribe(color => this.navColor = color);
+  }
+
+  get colors() {
+    return this.mapColors[this.navColor];
+  }
 
   logout() {
     this.authService.logout();

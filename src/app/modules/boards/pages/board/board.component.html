@@ -1,4 +1,7 @@
-<section class="flex flex-col w-full h-full bg-sky-600 px-4 pb-4">
+<section
+  class="flex flex-col w-full h-full px-4 pb-4"
+  [ngClass]="colors"
+>
   <h2 class="text-xl font-bold text-white my-4">{{ board?.title }}</h2>
   <section
     class="flex grow items-start w-full h-full min-h-[20rem] overflow-x-scroll"
