@@ -11,7 +11,7 @@ Este repositorio contiene el código de un aplicación de un clone de Trello, au
 - TailwindCSS para los estilos.
 - Fortawesome para iconos.
 
-Puedes ver el demo aquí: (https://rolando22.github.io/todo-machine/).
+Puedes ver el demo aquí: (https://angular-trello-clone-4071b.web.app).
 
 # AngularTrelloClone
 
