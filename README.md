@@ -1,3 +1,18 @@
+# Repositorio proyecto Trello Clone con Angular
+
+El proyecto fue creado mientras realizaba el curso de Plazti [La ruta de Frontend con Angular](https://platzi.com/ruta/web-angular/).
+
+Este repositorio contiene el código de un aplicación de un clone de Trello, autenticación de usuarios, poder crear Boards, Lists y Cards en cuenta propia.
+
+- Desarrollada con Angular v15.
+- RXJS para la reactividad de la APP.
+- Aplicando programación modular y Lazy Loading para los módulos.
+- Angular CDK para componentes y funcionalidades como Overlay, Accordions, Tables y DragAndDrog.
+- TailwindCSS para los estilos.
+- Fortawesome para iconos.
+
+Puedes ver el demo aquí: (https://rolando22.github.io/todo-machine/).
+
 # AngularTrelloClone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
