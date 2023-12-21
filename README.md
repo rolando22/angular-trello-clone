@@ -1,6 +1,6 @@
 # Repositorio proyecto Trello Clone con Angular
 
-El proyecto fue creado mientras realizaba el curso de Plazti [La ruta de Frontend con Angular](https://platzi.com/ruta/web-angular/).
+El proyecto fue creado mientras realizaba el curso de Platzi [La ruta de Frontend con Angular](https://platzi.com/ruta/web-angular/).
 
 Este repositorio contiene el código de un aplicación de un clone de Trello, autenticación de usuarios, poder crear Boards, Lists y Cards en cuenta propia.
 
